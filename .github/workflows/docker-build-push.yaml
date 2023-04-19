@@ -16,5 +16,5 @@ jobs:
         push: true
         tags: nadaahmed35/task:latest
         registry: docker.io
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        username: ${{ nadaahmed35 }}
+        password: ${{ Nada.Ahmed2002 }}
