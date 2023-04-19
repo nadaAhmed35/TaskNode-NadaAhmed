@@ -1,20 +1,31 @@
-name: Docker Build & Push
+name: Build and Push Docker Image
+
 on:
   push:
     branches:
       - main
+
+env:
+  DOCKER_USERNAME: nadaahmed35
+  DOCKER_PASSWORD: Nada.Ahmed2002
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v2
-    - name: Build and Push Docker Image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        push: true
-        tags: nadaahmed35/task:latest
-        registry: docker.io
-        username: ${{ nadaahmed35 }}
-        password: ${{ Nada.Ahmed2002 }}
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ env.DOCKER_USERNAME }}
+          password: ${{ env.DOCKER_PASSWORD }}
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ${{ env.DOCKER_USERNAME }}/my-node-app:latest
