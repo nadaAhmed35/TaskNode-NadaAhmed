@@ -30,4 +30,4 @@ jobs:
         context: .
         file: Dockerfile
         push: true
-        tags: nadaAhmed35/my-node-app:latest
+        tags: nadaahmed35/my-node-app:latest
